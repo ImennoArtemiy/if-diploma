@@ -1,8 +1,13 @@
+import {Routes, Route} from "react-router-dom";
+import {navigatePageUrl} from "./data/siteConfig";
+import MainPage from "./views/pages/MainPage";
+
 function App() {
   return (
-    <div className="App">
-      <p>Hello World!</p>
-    </div>
+      <Routes>
+          <Route path={navigatePageUrl.main} element={<MainPage/>}/>
+          {/*<Route path={navigatePageUrl.registration} element={<RegistrationPage/>}/>*/}
+      </Routes>
   );
 }
 
