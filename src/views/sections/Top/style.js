@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import bgImg from "../../../assets/img/topBg.png";
 import {colors, fontSetting} from "../../../data/siteConfig";
+import {clearBlur} from "../../../globalStyles";
 
 export const Section = styled.section`
-  display: flex;
-  align-items: end;
-  height: 100vh;
+  
   background: url(${bgImg}) no-repeat;
   background-size: cover;
   color: ${colors.white};
+`
+export const ClearBlurWrap = styled.div`
+  display: flex;
+  align-items: end;
+  height: 100vh;
+  animation: ${clearBlur} .2s ease;
 `
 export const ContentWrap = styled.div`
   max-width: 65%;

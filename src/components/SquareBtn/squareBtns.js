@@ -2,13 +2,14 @@ import styled from "styled-components";
 import {btn, fontSetting} from "../../data/siteConfig";
 
 const Btn = styled.button.attrs({type: 'button'})`
+  width: ${props => props.width};
   background-color: ${props => props.bg};
   color: ${props => props.cl};
   border: ${props => props.br};
   text-transform: uppercase;
   font-size: ${fontSetting.large.fs};
   line-height: ${fontSetting.large.lh};
-  padding: 15px 30px;
+  padding: 10px 10px;
   transition: .2s ease;
   &:hover {
     background-color: ${props => props.hoverBg};
@@ -22,9 +23,10 @@ const Btn = styled.button.attrs({type: 'button'})`
   }
 `
 
-export const SquareTransparentBtn = ({text}) => {
+export const SquareTransparentBtn = ({text, onClick}) => {
     return (
-        <Btn bg={btn.transparentWhite.bg}
+        <Btn onClick={onClick}
+             bg={btn.transparentWhite.bg}
              cl={btn.transparentWhite.cl}
              br={btn.transparentWhite.br}
              hoverBg={btn.transparentWhite.hoverBg}
@@ -37,14 +39,16 @@ export const SquareTransparentBtn = ({text}) => {
     )
 }
 
-export const SquareBlackBtn = ({text}) => {
+export const SquareBlackBtn = ({text, width, onClick}) => {
     return (
-        <Btn bg={btn.black.bg}
+        <Btn onClick={onClick}
+             bg={btn.black.bg}
              cl={btn.black.cl}
              br={btn.black.br}
              hoverBg={btn.black.hoverBg}
              hoverCl={btn.black.hoverCl}
              hoverBr={btn.black.hoverBr}
+             width={width}
         >{text}</Btn>
     )
 }

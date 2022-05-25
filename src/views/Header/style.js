@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {colors, fontSetting} from "../../data/siteConfig";
+import {Link} from "react-router-dom";
 
 export const HeaderBlock = styled.header`
   position: absolute;
@@ -11,7 +12,7 @@ export const HeaderBlock = styled.header`
   transition: .5s ease;
 
   &:hover {
-    background-color: rgba(208, 196, 185, 0.5);
+    background-color: rgba(208, 196, 185, 0.8);
   }
 `
 export const Navigation = styled.nav`
@@ -33,7 +34,7 @@ export const Logo = styled.svg`
   transition: .2s ease;
 
   &:hover {
-    fill: ${colors.purpleBlue};
+    fill: ${colors.brown};
   }
 
   &:active {
@@ -45,7 +46,8 @@ export const RightNav = styled.div`
   display: flex;
 `
 
-export const NavItem = styled.a`
+export const NavItem = styled.div`
+  cursor: pointer;
   color: ${colors.white};
   transition: .2s ease;
 
@@ -54,7 +56,19 @@ export const NavItem = styled.a`
   }
 
   &:hover {
-    color: ${colors.purpleBlue};
+    color: ${colors.brown};
+  }
+
+  &:active {
+    color: ${colors.black};
+  }
+`
+export const HeaderLink = styled(Link)`
+  color: ${colors.white};
+  transition: .2s ease;
+    
+  &:hover {
+    color: ${colors.brown};
   }
 
   &:active {
@@ -62,21 +76,22 @@ export const NavItem = styled.a`
   }
 `
 
-export const NavItemSearch = styled.a`
+export const NavItemSearch = styled.div`
   position: relative;
   color: ${colors.white};
   transition: .2s ease;
-
+  cursor: pointer;
+  
   &:not(:last-child) {
     margin-right: 50px;
   }
 
   &:hover {
-    color: ${colors.purpleBlue};
+    color: ${colors.brown};
   }
 
   &:hover .icon {
-    fill: ${colors.purpleBlue};
+    fill: ${colors.brown};
   }
 
   &:active {
@@ -85,6 +100,9 @@ export const NavItemSearch = styled.a`
 
   &:active .icon {
     fill: ${colors.black};
+  }
+  .registrationLink {
+    color: ${colors.white};
   }
 `
 
@@ -105,7 +123,7 @@ export const HeartIcon = styled.svg`
   fill: ${colors.white};
 
   &:hover {
-    fill: ${colors.purpleBlue};
+    fill: ${colors.brown};
   }
 
   &:active {

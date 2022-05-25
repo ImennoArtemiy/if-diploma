@@ -1,6 +1,7 @@
 export const navigatePageUrl = {
     main: '/',
     registration: 'registration',
+    authorization: 'authorization'
 }
 
 export const colors = {
@@ -11,7 +12,8 @@ export const colors = {
     purpleGray: '#EDE7F0',
     white: '#FFFFFF',
     red: '#D7302D',
-    purpleBlue: '#465367',
+    brown: '#6F361D',
+    purpleBlue: '#40455E',
 }
 
 export const fontSetting = {
@@ -38,9 +40,9 @@ export const btn = {
         bg: 'transparent',
         cl: '#FFFFFF',
         br: '2px solid #FFFFFF',
-        hoverBg: 'rgba(208, 196, 185, 0.5)',
-        hoverCl: '#465367',
-        hoverBr: '2px solid #465367',
+        hoverBg: 'rgba(208, 196, 185, 0.8)',
+        hoverCl: '#6F361D',
+        hoverBr: '2px solid #6F361D',
         activeBg: 'rgba(208,196,185,0.6)',
         activeCl: '#000F08',
         activeBr: '2px solid #000F08',

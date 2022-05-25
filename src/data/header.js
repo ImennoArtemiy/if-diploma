@@ -1,12 +1,13 @@
 export const headerData = {
     leftNav: {
-        first: 'new arrivals',
-        middle: 'shop',
-        last: 'collections',
+        arrivals: 'new arrivals',
+        shop: 'shop',
+        collections: 'collections',
     },
     rightNav: {
-        first: 'search',
-        middle: 'sign in',
-        last: 'bag',
+        search: 'search',
+        signIn: 'sign in',
+        signOut: 'sign out',
+        bag: 'bag',
     }
 }
