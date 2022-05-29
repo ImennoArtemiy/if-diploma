@@ -1,15 +1,16 @@
 import {form} from "../../../data/forms";
 import {Link} from "react-router-dom";
 import {colors, navigatePageUrl} from "../../../data/siteConfig";
-import LabelInput from "../LabelInput/LabelInput";
+import LabelInput from "../LabelInput";
 import {useState} from "react";
-import Checkbox from "../Checkbox/Checkbox";
-import {SquareBlackBtn} from "../../SquareBtn/squareBtns";
+import Checkbox from "../../Btns/Checkbox";
+import BlackBtn from "../../Btns/BlackBtn";
 import {Form, Flex, TitleWrap, Title, Politics, GoTo} from "./style";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setEmail, setFirstName, setLastName, setPassword} from "../../../ducks/user/actions";
 import SuccessfullyMessage from "../SuccessfullyMessage";
 import CloseBtn from "../../CloseBtn";
+import {firstName} from "../../../ducks/user/selectors";
 
 const RegForm = ({setHaveAnAccount}) => {
 
@@ -24,6 +25,8 @@ const RegForm = ({setHaveAnAccount}) => {
     const [emptyFieldPassword, setEmptyFieldPassword] = useState(false)
 
     const [isRegistered, setIsRegistered] = useState(false)
+
+    const userName = useSelector(firstName)
 
     const dispatch = useDispatch()
 
@@ -97,10 +100,18 @@ const RegForm = ({setHaveAnAccount}) => {
         setIsRegistered(true)
     }
 
+    const handleClick = () => {
+        setHaveAnAccount(true)
+    }
+
     return (
         <>
             {
-                isRegistered ? <SuccessfullyMessage setHaveAnAccount={setHaveAnAccount}/> :
+                isRegistered ? <SuccessfullyMessage setHaveAnAccount={setHaveAnAccount}
+                                                    message={`Thank you for choosing our service ${userName}!`}
+                                                    btnText='OK'
+                                                    onClick={handleClick}
+                    /> :
                     <Form>
                         <TitleWrap>
                             <Title>{form.titleCreateAccount}</Title>
@@ -160,9 +171,7 @@ const RegForm = ({setHaveAnAccount}) => {
                         <Politics>By signing up you agree
                             to <span>Terms of Service</span> and <span>Privacy Policy</span></Politics>
                         <Flex>
-                            <SquareBlackBtn text={form.signUpText}
-                                            width='50%'
-                                            onClick={handleClickSubmit}/>
+                            <BlackBtn btnText={form.signUpText} onClick={handleClickSubmit}/>
                         </Flex>
                         <GoTo onClick={() => setHaveAnAccount(true)} mt='30px'>{form.iHaveAnAccount}</GoTo>
                     </Form>

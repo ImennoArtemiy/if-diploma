@@ -1,6 +1,6 @@
 export const headerData = {
     leftNav: {
-        arrivals: 'new arrivals',
+        sales: 'sales',
         shop: 'shop',
         collections: 'collections',
     },

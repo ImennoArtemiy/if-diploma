@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import {colors} from "../../data/siteConfig";
-import {useSelector} from "react-redux";
-import {firstName} from "../../ducks/user/selectors";
 import {appearance} from "../../globalStyles";
-import {SquareBlackBtn} from "../SquareBtn/squareBtns";
-import {form} from "../../data/forms";
+import BlackBtn from "../Btns/BlackBtn";
 
 const Window = styled.div`
   width: 520px;
   padding: 30px;
-  background-color: ${colors.white};
+  background-color: ${props => props.bg || colors.white};
   animation: ${appearance} .2s ease;
   font-weight: 300;
+  border-radius: 8px;
 `
 const Message = styled.p`
   margin-bottom: 30px;
@@ -21,21 +19,15 @@ const Flex = styled.div`
   justify-content: center;
 `
 
-const SuccessfullyMessage = ({setHaveAnAccount}) => {
-
-    const userName = useSelector(firstName)
-
-    const handleClick = () => {
-        setHaveAnAccount(true)
-    }
-
+const SuccessfullyMessage = ({message, btnText, bg, onClick}) => {
 
     return (
-        <Window>
-            <Message>{`Thank you for choosing our service ${userName}!`}</Message>
+        <Window bg={bg}>
+            <Message>{message}</Message>
             <Flex>
-                <SquareBlackBtn text={form.signInText}
-                                width='30%' onClick={handleClick}/>
+                <BlackBtn btnText={btnText}
+                          onClick={onClick}
+                />
             </Flex>
         </Window>
     )

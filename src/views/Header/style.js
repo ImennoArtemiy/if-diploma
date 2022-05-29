@@ -44,6 +44,7 @@ export const Logo = styled.svg`
 
 export const RightNav = styled.div`
   display: flex;
+  position: relative;
 `
 
 export const NavItem = styled.div`

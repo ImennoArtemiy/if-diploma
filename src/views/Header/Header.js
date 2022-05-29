@@ -16,10 +16,34 @@ import {navigatePageUrl} from "../../data/siteConfig";
 import {useDispatch, useSelector} from "react-redux";
 import {isLogged} from "../../ducks/user/selectors";
 import {logout} from "../../ducks/user/actions";
+import SearchInput from "../../components/formItems/SearchInput";
 
-const Header = ({userWantsToSearch, setUserWantsToSearch}) => {
+const Header = ({
+                    userWantsToSearch,
+                    setUserWantsToSearch,
+                    arrivalRef,
+                    shopRef,
+                    salesRef,
+                    setArrivalsSelected,
+                }) => {
     const userIsLogged = useSelector(isLogged)
     const dispatch = useDispatch()
+
+    const scrollTo = (e) => {
+        let id = e.target.id
+
+        if (id === 'collectionBtn') {
+            window.scrollTo(0, arrivalRef.current.offsetTop)
+            setArrivalsSelected(false)
+        }
+        if (id === 'shopBtn') {
+            window.scrollTo(0, shopRef.current.offsetTop)
+            setArrivalsSelected(false)
+        }
+        if (id === 'salesBtn') {
+            window.scrollTo(0, salesRef.current.offsetTop)
+        }
+    }
 
     const handleLogoutClick = () => {
         dispatch(logout(false))
@@ -35,9 +59,10 @@ const Header = ({userWantsToSearch, setUserWantsToSearch}) => {
                 {
                     userIsLogged && (
                         <LeftNav>
-                            <NavItem>{headerData.leftNav.arrivals}</NavItem>
-                            <NavItem>{headerData.leftNav.shop}</NavItem>
-                            <NavItem>{headerData.leftNav.collections}</NavItem>
+                            <NavItem onClick={scrollTo}
+                                     id='collectionBtn'>{headerData.leftNav.collections}</NavItem>
+                            <NavItem id='shopBtn' onClick={scrollTo}>{headerData.leftNav.shop}</NavItem>
+                            <NavItem id='salesBtn'onClick={scrollTo}>{headerData.leftNav.sales}</NavItem>
                         </LeftNav>
                     )
                 }
@@ -47,6 +72,9 @@ const Header = ({userWantsToSearch, setUserWantsToSearch}) => {
                     </Logo>
                 </NavItem>
                 <RightNav>
+                    {
+                        userWantsToSearch && <SearchInput/>
+                    }
                     <NavItemSearch onClick={handleSearchClick}>
                         <SearchIcon className='icon'>
                             <use href={svgName.search}/>

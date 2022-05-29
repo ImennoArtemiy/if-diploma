@@ -1,21 +1,27 @@
 import topData from "../../../data/top";
-import {SquareTransparentBtn} from "../../../components/SquareBtn/squareBtns";
 import {Section, MainText, MainTitle, ContentWrap, ClearBlurWrap} from "./style";
 import {Wrapper} from "../../../globalStyles";
-import SearchInput from "../../../components/formItems/SearchInput/SearchInput";
+import {TransparentWhiteBtn} from "../../../components/Btns/TransparentWhiteBtn";
 
-const Top = ({userWantsToSearch}) => {
+const Top = ({arrivalRef, setArrivalsSelected}) => {
+    const scrollToArrival = (e) => {
+        window.scrollTo(0, arrivalRef.current.offsetTop)
+        if (e.target.id === 'arrivalsBtn') {
+            setArrivalsSelected(true)
+        }
+    }
+
     return (
         <Section id={topData.id}>
             <ClearBlurWrap>
                 <Wrapper>
-                    {
-                        userWantsToSearch && <SearchInput/>
-                    }
                     <ContentWrap>
                         <MainTitle>{topData.title}</MainTitle>
                         <MainText>{topData.text}</MainText>
-                        <SquareTransparentBtn text={topData.btnText}/>
+                        <TransparentWhiteBtn id='arrivalsBtn'
+                                             onClick={scrollToArrival}
+                                             text={topData.btnText}
+                        />
                     </ContentWrap>
                 </Wrapper>
             </ClearBlurWrap>

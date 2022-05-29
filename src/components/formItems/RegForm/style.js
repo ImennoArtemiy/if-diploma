@@ -16,7 +16,7 @@ export const TitleWrap = styled.div`
   justify-content: space-between;
   margin-bottom: 30px;
 `
-export const Title = styled.h2`
+export const Title = styled.h3`
   color: ${colors.black};
 `
 export const Politics = styled.p`
@@ -43,6 +43,7 @@ export const GoTo = styled.p`
 `
 export const Error = styled.p`
   font-weight: 400;
+  font-size: 16px;
   color: ${colors.red};
   padding: 10px;
   opacity: ${props => props.opacity};

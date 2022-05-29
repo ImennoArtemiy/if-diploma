@@ -1,17 +1,18 @@
-import LabelInput from "../LabelInput/LabelInput";
+import LabelInput from "./LabelInput";
 import styled from "styled-components";
-import {colors} from "../../../data/siteConfig";
+import {colors} from "../../data/siteConfig";
 import {useState} from "react";
-import CloseBtn from "../../CloseBtn";
+import CloseBtn from "../CloseBtn";
 import {useDispatch} from "react-redux";
-import {changeValue, clearValue} from "../../../ducks/searchValue/actions";
-import {search} from "../../../data/forms";
+import {changeValue, clearValue} from "../../ducks/searchValue/actions";
+import {search} from "../../data/forms";
 
 const InputWrapper = styled.form`
   display: flex;
+  color: ${colors.white};
   position: absolute;
-  top: -75%;
-  right: 0;
+  bottom: -120px;
+  left: -20px;
   background-color: rgba(208, 196, 185, 0.9);
   padding: 25px;
   border-radius: 8px;

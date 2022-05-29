@@ -23,12 +23,13 @@ export const GlobalStyles = createGlobalStyle`
   nav, footer, header, aside {
     display: block;
   }
-
+  
   html, body {
     height: 100%;
     width: 100%;
     font-size: 100%;
     line-height: 1;
+    scroll-behavior: smooth;
   }
 
   input, button, textarea {
@@ -62,6 +63,8 @@ export const GlobalStyles = createGlobalStyle`
 
   img {
     vertical-align: top;
+    display: block;
+    width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -79,6 +82,13 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   h2 {
+    color: ${colors.black};
+    font-size: ${fontSetting.veryLarge.fs};
+    line-height: ${fontSetting.veryLarge.lh};
+    margin-bottom: 15px;
+  }
+  
+  h3 {
     font-size: ${fontSetting.large.fs};
     line-height: ${fontSetting.large.lh};
     text-transform: uppercase;
@@ -92,7 +102,7 @@ export const Wrapper = styled.div`
   position: relative;
   max-width: 1232px;
   margin: 0 auto;
-  padding: 70px 16px;
+  padding: ${props => props.padding || '50px 32px'};
   
 `
 export const blur = keyframes`

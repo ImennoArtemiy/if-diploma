@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions'
-import {setFirstName, setLastName, setPassword, setEmail, logout, login} from "./actions";
+import {setFirstName, setLastName, setPassword, setEmail, logout, login, clickFilter} from "./actions";
 
 export const initialState = {
     firstName: null,
@@ -33,7 +33,7 @@ const userReducer = {
     [logout]: (state = initialState) => ({
         ...state,
         isLogged: false
-    })
+    }),
 }
 
 export default handleActions(userReducer, initialState)

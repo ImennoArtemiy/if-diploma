@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors, fontSetting} from "../../../data/siteConfig";
+import {fontSetting} from "../../data/siteConfig";
 
 const Container = styled.div`
   position: relative;
@@ -9,9 +9,9 @@ const Label = styled.label`
   bottom: 10px;
   display: block;
   color: ${props => props.color};
-  font-weight: 300;
-  font-size: ${fontSetting.small.fs};
-  line-height: ${fontSetting.small.fs};
+  font-weight: ${props => props.fw || 300};
+  font-size: ${props => props.fs};
+  line-height: ${props => props.lh};
   transition: .2s ease;
 `
 const Input = styled.input`
@@ -25,7 +25,9 @@ const Input = styled.input`
   border-bottom: 2px solid ${props => props.brColor};
   margin-bottom: ${props => props.mb};
 `
-const LabelInput = ({
+const LabelInput = ({   fw,
+                        fs,
+                        lh,
                         labelText,
                         labelCl,
                         inputWidth,
@@ -40,12 +42,13 @@ const LabelInput = ({
                         onBlur,
                         value,
                     }) => {
-
-
     return (
         <Container>
             <Label className={isActive ? "labelActive" : ""}
                    htmlFor={inputId}
+                   fw={fw}
+                   fs={fs}
+                   lh={lh}
                    color={labelCl}>{labelText}</Label>
             <Input mb={inputMb} width={inputWidth}
                    color={inputColor}

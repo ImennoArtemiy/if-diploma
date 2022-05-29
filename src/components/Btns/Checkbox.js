@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {form} from "../../../data/forms";
+import {form} from "../../data/forms";
 
 const Wrap = styled.div`
   display: flex;

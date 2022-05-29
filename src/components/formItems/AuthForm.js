@@ -1,14 +1,14 @@
-import {form} from "../../../data/forms";
+import {form} from "../../data/forms";
 import {Link} from "react-router-dom";
-import {colors, navigatePageUrl} from "../../../data/siteConfig";
-import LabelInput from "../LabelInput/LabelInput";
-import {SquareBlackBtn} from "../../SquareBtn/squareBtns";
-import {Form, TitleWrap, Title, Flex, GoTo, Error} from "../RegForm/style";
+import {colors, navigatePageUrl} from "../../data/siteConfig";
+import LabelInput from "./LabelInput";
+import BlackBtn from "../Btns/BlackBtn";
+import {Form, TitleWrap, Title, Flex, GoTo, Error} from "./RegForm/style";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {login} from "../../../ducks/user/actions";
-import {email, password} from "../../../ducks/user/selectors";
-import CloseBtn from "../../CloseBtn";
+import {login} from "../../ducks/user/actions";
+import {email, password} from "../../ducks/user/selectors";
+import CloseBtn from "../CloseBtn";
 
 const AuthForm = ({setHaveAnAccount}) => {
 
@@ -106,9 +106,7 @@ const AuthForm = ({setHaveAnAccount}) => {
                         inputOnChange={handleInputChange}
             />
             <Flex>
-                <SquareBlackBtn text={form.signInText}
-                                width='50%'
-                                onClick={handleLoginClick}/>
+                <BlackBtn btnText={form.signInText} onClick={handleLoginClick}/>
 
                 <Error opacity={error ? 1 : 0}>Incorrect email or password!</Error>
 

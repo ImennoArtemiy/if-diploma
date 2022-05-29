@@ -3,4 +3,6 @@ export const svgName = {
     search: '#searchIcon',
     heart: '#heartIcon',
     close: '#closeIcon',
+    fillHeart: '#fillHeartIcon',
+    arrow: '#arrowIcon',
 }
