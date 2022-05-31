@@ -5,4 +5,7 @@ export const svgName = {
     close: '#closeIcon',
     fillHeart: '#fillHeartIcon',
     arrow: '#arrowIcon',
+    facebook: '#facebookIcon',
+    odnoklassniki: '#odnoklassnikiIcon',
+    instagram: '#instagramIcon',
 }

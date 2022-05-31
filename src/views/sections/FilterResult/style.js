@@ -95,7 +95,6 @@ export const ReservationBtn = styled.button.attrs({type: 'button'})`
   }
 `
 export const Text = styled.p`
-  max-width: 280px;
   color: ${colors.black};
   margin: 10px 0;
   @media (max-width: 900px) {

@@ -1,0 +1,9 @@
+export const customerService = 'CUSTOMER SERVICE'
+export const customerArray = ['CONTACT', 'TRACK ORDER', 'DELIVERY & RETURNS', 'PAYMENT', 'MAKE A RETURN', 'FAQ']
+export const info = 'INFO'
+export const infoArray = ['GIFT VOUCHERS', 'SIZE GUIDE', 'CAREERS AT MODNIKKY', 'ABOUT US', 'LEGAL POLICIES']
+export const followUs = 'FOLLOW US'
+export const followUsArray = ['FACEBOOK', 'ODNOKLASSNIKI', 'INSTAGRAM']
+export const contactUs = 'CONTACT US'
+export const contactUsArray = ['hello@modnikky.com', '+7 910 832 26XX', 'Visit us at Shalalaeva 23,Bologoe, Russia']
+export const svgIcon = ['#facebookIcon', '#odnoklassnikiIcon', '#instagramIcon']

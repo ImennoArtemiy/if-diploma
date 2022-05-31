@@ -93,6 +93,10 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${fontSetting.large.lh};
     text-transform: uppercase;
   }
+  h4 {
+    font-size: 20px;
+    line-height: 24px;
+  }
   
   .labelActive {
     bottom: 30px;

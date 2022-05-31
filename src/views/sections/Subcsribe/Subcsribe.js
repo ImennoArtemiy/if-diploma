@@ -103,7 +103,7 @@ const Subscribe = () => {
                 isLoading && <PreLoader/>
 
             }
-            <Wrapper>
+            <Wrapper padding='10px 32px 80px'>
                 {
                     !isLoading && !responseMessage && (
                         <>
@@ -124,15 +124,15 @@ const Subscribe = () => {
                                             inputOnChange={handleInputChange}
                                 />
                                 <Btn onClick={handleEmailSubmit}>{btnText}</Btn>
+                                <Error top='30px' left='115px'>
+                                    {
+                                        emptyFieldEmail && !emailError && submit && emptyErrorText
+                                    }
+                                    {
+                                        emailError && submit && emailErrorText
+                                    }
+                                </Error>
                             </EmailWrapper>
-                            <Error>
-                                {
-                                    emptyFieldEmail && !emailError && submit && emptyErrorText
-                                }
-                                {
-                                    emailError && submit && emailErrorText
-                                }
-                            </Error>
                         </>
                     )
                 }

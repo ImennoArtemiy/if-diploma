@@ -7,6 +7,7 @@ import NotFound from "../sections/FilterResult/NotFound";
 import Sale from "../sections/Sale/Sale";
 import Arrivals from "../sections/Arrivals/Arrivals";
 import Subcsribe from "../sections/Subcsribe/Subcsribe";
+import Footer from "../Footer/Footer";
 
 const MainPage = () => {
 
@@ -20,34 +21,37 @@ const MainPage = () => {
     const salesRef = createRef()
 
     return (
-        <main>
-            <Header arrivalRef={arrivalRef}
-                    shopRef={shopRef}
-                    salesRef={salesRef}
-                    userWantsToSearch={userWantsToSearch}
-                    setUserWantsToSearch={setUserWantsToSearch}
-                    setArrivalsSelected={setArrivalsSelected}
-            />
-            <Top arrivalRef={arrivalRef}
-                 userWantsToSearch={userWantsToSearch}
-                 setArrivalsSelected={setArrivalsSelected}
-            />
-            <Category shopRef={shopRef}
-                      resultRef={resultRef}
-                      setSumVisibleCards={setSumVisibleCards}
-            />
-            <FilterResult resultRef={resultRef}
-                          sumVisibleCards={sumVisibleCards}
+        <>
+            <main>
+                <Header arrivalRef={arrivalRef}
+                        shopRef={shopRef}
+                        salesRef={salesRef}
+                        userWantsToSearch={userWantsToSearch}
+                        setUserWantsToSearch={setUserWantsToSearch}
+                        setArrivalsSelected={setArrivalsSelected}
+                />
+                <Top arrivalRef={arrivalRef}
+                     userWantsToSearch={userWantsToSearch}
+                     setArrivalsSelected={setArrivalsSelected}
+                />
+                <Category shopRef={shopRef}
+                          resultRef={resultRef}
                           setSumVisibleCards={setSumVisibleCards}
-            />
-            <NotFound resultRef={resultRef}/>
-            <Sale salesRef={salesRef}/>
-            <Arrivals arrivalRef={arrivalRef}
-                      arrivalsSelected={arrivalsSelected}
-                      setArrivalsSelected={setArrivalsSelected}
-            />
-            <Subcsribe/>
-        </main>
+                />
+                <FilterResult resultRef={resultRef}
+                              sumVisibleCards={sumVisibleCards}
+                              setSumVisibleCards={setSumVisibleCards}
+                />
+                <NotFound resultRef={resultRef}/>
+                <Sale salesRef={salesRef}/>
+                <Arrivals arrivalRef={arrivalRef}
+                          arrivalsSelected={arrivalsSelected}
+                          setArrivalsSelected={setArrivalsSelected}
+                />
+                <Subcsribe/>
+            </main>
+            <Footer/>
+        </>
     )
 }
 

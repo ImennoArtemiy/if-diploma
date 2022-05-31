@@ -44,6 +44,7 @@ const SearchInput = () => {
                       fill={colors.white} onClick={handleCloseClick}
             />
             <LabelInput inputId={search.id}
+                        fw={400}
                         labelText={search.labelText}
                         labelCL={colors.white}
                         inputWidth='200px'

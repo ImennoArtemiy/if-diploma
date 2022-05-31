@@ -107,11 +107,11 @@ const AuthForm = ({setHaveAnAccount}) => {
             />
             <Flex>
                 <BlackBtn btnText={form.signInText} onClick={handleLoginClick}/>
-
-                <Error opacity={error ? 1 : 0}>Incorrect email or password!</Error>
-
+                {
+                    error && <Error top='-45px'>Incorrect email or password!</Error>
+                }
             </Flex>
-            <GoTo onClick={() => setHaveAnAccount(false)}>{form.backToRegistration}</GoTo>
+            <GoTo mt='30px' onClick={() => setHaveAnAccount(false)}>{form.backToRegistration}</GoTo>
         </Form>
     )
 }

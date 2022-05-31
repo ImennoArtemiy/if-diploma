@@ -30,6 +30,7 @@ export const Politics = styled.p`
   }
 `
 export const Flex = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,9 +43,11 @@ export const GoTo = styled.p`
   margin-top: ${props => props.mt};
 `
 export const Error = styled.p`
+  position: absolute;
+  top: ${props => props.top};
+  left: ${props => props.left};
   font-weight: 400;
   font-size: 16px;
   color: ${colors.red};
   padding: 10px;
-  opacity: ${props => props.opacity};
 `
