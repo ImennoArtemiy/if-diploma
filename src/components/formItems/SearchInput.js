@@ -4,10 +4,11 @@ import {colors} from "../../data/siteConfig";
 import {useState} from "react";
 import CloseBtn from "../CloseBtn";
 import {useDispatch} from "react-redux";
-import {changeValue, clearValue} from "../../ducks/searchValue/actions";
+import {changeValue, clearValue, findValue} from "../../ducks/searchValue/actions";
 import {search} from "../../data/forms";
+import {getGoods} from "../../ducks/getAllGoods/actions";
 
-const InputWrapper = styled.form`
+const Form = styled.form`
   display: flex;
   color: ${colors.white};
   position: absolute;
@@ -34,12 +35,18 @@ const SearchInput = () => {
     const handleCloseClick = () => {
         setSearchValue('')
         dispatch(clearValue())
-        document.getElementById(`${search.reset}`).reset()
+    }
+
+    const handleKeyDown = (e) => {
+        if(e.keyCode === 13) {
+            e.preventDefault();
+            dispatch(getGoods(findValue))
+        }
     }
 
 
     return (
-        <InputWrapper id={search.reset}>
+        <Form id={search.form}>
             <CloseBtn margin='8px 8px 0 0'
                       fill={colors.white} onClick={handleCloseClick}
             />
@@ -54,8 +61,9 @@ const SearchInput = () => {
                         isActive={searchValue}
                         value={searchValue}
                         inputOnChange={handleInputChange}
+                        onKeyDown={handleKeyDown}
             />
-        </InputWrapper>
+        </Form>
     )
 }
 export default SearchInput

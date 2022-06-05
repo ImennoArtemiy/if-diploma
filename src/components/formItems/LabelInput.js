@@ -40,6 +40,7 @@ const LabelInput = ({   fw,
                         isActive,
                         onFocus,
                         onBlur,
+                        onKeyDown,
                         value,
                     }) => {
     return (
@@ -58,6 +59,7 @@ const LabelInput = ({   fw,
                    onChange={inputOnChange}
                    onFocus={onFocus}
                    onBlur={onBlur}
+                   onKeyDown={onKeyDown}
                    value={value}
             />
         </Container>

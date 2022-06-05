@@ -29,7 +29,7 @@ Exclusive early access to Sale, new arrivals and promotions. No nasties.`,
 
 export const search = {
     id:'inputSearch',
-    reset: 'resetForm',
+    form: 'form',
     labelText: 'ENTER SEARCH TERMS',
     inputType: 'text',
 }

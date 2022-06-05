@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions'
-import {setFirstName, setLastName, setPassword, setEmail, logout, login, clickFilter} from "./actions";
+import {setFirstName, setLastName, setPassword, setEmail, logout, login} from "./actions";
 
 export const initialState = {
     firstName: null,

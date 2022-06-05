@@ -1,7 +1,7 @@
 import {Wrapper} from "../../../globalStyles";
 import styled from "styled-components";
 import {useSelector} from "react-redux";
-import FilterCard from "./FilterCard";
+import FilterCard from "../FilterResult/FilterCard";
 import {useEffect, useState} from "react";
 import {loading} from "../../../ducks/preLoad/selectors";
 import PreLoader from "../../../components/PreLoader";
@@ -19,7 +19,7 @@ const BtnContainer = styled.div`
   justify-content: center;
 `
 
-const FilterResult = ({myRef, sumVisibleCards, setSumVisibleCards, arrayData, condition, title}) => {
+const SearchResult = ({myRef, sumVisibleCards, setSumVisibleCards, arrayData, condition}) => {
 
     const isLoad = useSelector(loading)
 
@@ -42,7 +42,7 @@ const FilterResult = ({myRef, sumVisibleCards, setSumVisibleCards, arrayData, co
                 {
                     !isLoad && (
                         <>
-                            <h2>{arrayData[0].type}</h2>
+                            <h2>Search results:</h2>
                             <CardsWrapper>
                                 {
                                     data.slice(0, sumVisibleCards).map(item => <FilterCard key={item.id} item={item}/>)
@@ -69,4 +69,5 @@ const FilterResult = ({myRef, sumVisibleCards, setSumVisibleCards, arrayData, co
     )
 }
 
-export default FilterResult
+export default SearchResult
+

@@ -8,8 +8,17 @@ import Sale from "../sections/Sale/Sale";
 import Arrivals from "../sections/Arrivals/Arrivals";
 import Subcsribe from "../sections/Subcsribe/Subcsribe";
 import Footer from "../Footer/Footer";
+import {useSelector} from "react-redux";
+import {searchResult} from "../../ducks/searchValue/selectors";
+import {goods} from "../../ducks/getAllGoods/selectors";
+import {clickFilter} from "../../ducks/clickFilter/slectors";
+import SearchResult from "../sections/SearchResult/SearchResult";
 
 const MainPage = () => {
+
+    const searchResultData = useSelector(searchResult)
+    const goodsData = useSelector(goods)
+    const userClickFilter = useSelector(clickFilter)
 
     const [userWantsToSearch, setUserWantsToSearch] = useState(false)
     const [sumVisibleCards, setSumVisibleCards] = useState(4)
@@ -19,6 +28,7 @@ const MainPage = () => {
     const arrivalRef = createRef()
     const shopRef = createRef()
     const salesRef = createRef()
+    const searchRef = createRef()
 
     return (
         <>
@@ -26,6 +36,7 @@ const MainPage = () => {
                 <Header arrivalRef={arrivalRef}
                         shopRef={shopRef}
                         salesRef={salesRef}
+                        searchRef={searchRef}
                         userWantsToSearch={userWantsToSearch}
                         setUserWantsToSearch={setUserWantsToSearch}
                         setArrivalsSelected={setArrivalsSelected}
@@ -34,11 +45,20 @@ const MainPage = () => {
                      userWantsToSearch={userWantsToSearch}
                      setArrivalsSelected={setArrivalsSelected}
                 />
+                <SearchResult
+                              arrayData={searchResultData}
+                              condition={true}
+                              myRef={searchRef}
+                              sumVisibleCards={sumVisibleCards}
+                              setSumVisibleCards={setSumVisibleCards}
+                />
                 <Category shopRef={shopRef}
                           resultRef={resultRef}
                           setSumVisibleCards={setSumVisibleCards}
                 />
-                <FilterResult resultRef={resultRef}
+                <FilterResult arrayData={goodsData}
+                              condition={userClickFilter}
+                              myRef={resultRef}
                               sumVisibleCards={sumVisibleCards}
                               setSumVisibleCards={setSumVisibleCards}
                 />

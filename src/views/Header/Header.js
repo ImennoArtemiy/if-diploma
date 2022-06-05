@@ -62,7 +62,7 @@ const Header = ({
                             <NavItem onClick={scrollTo}
                                      id='collectionBtn'>{headerData.leftNav.collections}</NavItem>
                             <NavItem id='shopBtn' onClick={scrollTo}>{headerData.leftNav.shop}</NavItem>
-                            <NavItem id='salesBtn'onClick={scrollTo}>{headerData.leftNav.sales}</NavItem>
+                            <NavItem id='salesBtn' onClick={scrollTo}>{headerData.leftNav.sales}</NavItem>
                         </LeftNav>
                     )
                 }
@@ -108,7 +108,6 @@ const Header = ({
                             </>
                         )
                     }
-
                 </RightNav>
             </Navigation>
         </HeaderBlock>

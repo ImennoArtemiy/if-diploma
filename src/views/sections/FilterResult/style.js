@@ -16,6 +16,7 @@ export const Card = styled.div`
   position: relative;
   width: calc(25% - 16px);
   margin: 24px 16px 0 0;
+  
   @media (max-width: 900px) {
     margin: 8px 0 0 0;
     width: calc(50% - 8px);
@@ -96,11 +97,10 @@ export const ReservationBtn = styled.button.attrs({type: 'button'})`
 `
 export const Text = styled.p`
   color: ${colors.black};
-  margin: 10px 0;
-  @media (max-width: 900px) {
-    margin: 8px 0;
-  }
-  @media (max-width: 576px) {
-    margin: 4px 0;
-  }
+  margin-top: 10px;
+`
+export const Name = styled.p`
+  color: ${colors.gray};
+  margin-bottom: 30px;
+  font-size: 16px;
 `

@@ -20,7 +20,7 @@ const Title = styled.h2`
   border: 2px solid ${colors.red};
 `
 
-const NotFound = ({resultRef}) => {
+const  NotFound = ({resultRef}) => {
   const isLoad = useSelector(loading)
   const userClickFilter = useSelector(clickFilter)
   const goodsData = useSelector(goods)
@@ -38,7 +38,6 @@ const NotFound = ({resultRef}) => {
               isLoad && userClickFilter && goodsData.length === 0 ? <PreLoader resultRef={resultRef}/> : null
           }
       </>
-
   )
 }
 

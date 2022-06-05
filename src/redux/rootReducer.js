@@ -8,7 +8,7 @@ import messageReducer from '../ducks/subscribeMessage/reducers'
 
 export default combineReducers({
     user: userReducer,
-    searchValue: changeValueReducer,
+    search: changeValueReducer,
     goods: goodReducer,
     clickFilter: clickFilterReducer,
     loading: preLoadReducer,

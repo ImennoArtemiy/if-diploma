@@ -1,4 +1,4 @@
-import {Card, ImageContainer, ReservationBtn, BlackOutContainer, Text, LikeBtn} from "./style";
+import {Card, ImageContainer, ReservationBtn, BlackOutContainer, Text, LikeBtn, Name} from "./style";
 import {svgName} from "../../../data/svg";
 import {useState} from "react";
 import {colors} from "../../../data/siteConfig";
@@ -13,6 +13,10 @@ const FilterCard = ({item}) => {
         setAddLike(!addLike)
     }
 
+    const toCapitalizeName = item.name[0].toUpperCase() + item.name.slice(1).toLowerCase()
+
+
+
     return (
         <Card>
             <LikeBtn onClick={handlerLikeClick} fill={addLike ? colors.red : colors.white}>
@@ -25,6 +29,7 @@ const FilterCard = ({item}) => {
                 </BlackOutContainer>
             </ImageContainer>
             <Text>{`$${currentPrice}`}</Text>
+            <Name>{toCapitalizeName}</Name>
         </Card>
     )
 }
