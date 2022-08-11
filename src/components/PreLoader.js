@@ -79,10 +79,10 @@ const Loader = styled.div`
     }
 `
 
-const PreLoader = ({resultRef, width, bg}) => {
+const PreLoader = ({width, bg}) => {
 
     return (
-        <Section id='preLoader' width={width} bg={bg} ref={resultRef}
+        <Section id='preLoader' width={width} bg={bg}
         >
             <Wrapper>
                 <Title>Loading...</Title>

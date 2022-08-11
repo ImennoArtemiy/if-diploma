@@ -2,9 +2,9 @@ import styled from "styled-components";
 import {btn, fontSetting} from "../../data/siteConfig";
 
 const Btn = styled.button.attrs({type: 'button'})`
-  min-width: 100px;
+  min-width: 50px;
   background-color: ${btn.black.bg};
-  color: ${btn.black.cl};
+  color: ${props => props.color || btn.black.cl};
   border: ${btn.black.br};
   text-transform: uppercase;
   font-size: ${fontSetting.large.fs};
@@ -12,6 +12,7 @@ const Btn = styled.button.attrs({type: 'button'})`
   padding: 5px 15px;
   transition: .2s ease;
   border-radius: 8px;
+  margin-right: ${props => props.mr};
 
   &:hover {
     background-color: ${btn.black.hoverBg};
@@ -26,9 +27,9 @@ const Btn = styled.button.attrs({type: 'button'})`
   }
 `
 
-const BlackBtn = ({btnText, onClick}) => {
+const BlackBtn = ({btnText, onClick, mr, color}) => {
     return (
-        <Btn onClick={onClick}>{btnText}</Btn>
+        <Btn onClick={onClick} mr={mr} color={color}>{btnText}</Btn>
     )
 }
 

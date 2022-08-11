@@ -105,7 +105,7 @@ const Subscribe = () => {
             }
             <Wrapper padding='10px 32px 80px'>
                 {
-                    !isLoading && !responseMessage && (
+                    !responseMessage && (
                         <>
                             <Title>{title}</Title>
                             <Text>{text}</Text>

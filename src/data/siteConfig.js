@@ -1,7 +1,10 @@
 export const navigatePageUrl = {
     main: '/',
-    registration: 'registration',
-    authorization: 'authorization'
+    registration: '/registration',
+    authorization: '/authorization',
+    good:'/good/:id',
+    bag: '/bag',
+    favorites: '/favorites',
 }
 
 export const colors = {

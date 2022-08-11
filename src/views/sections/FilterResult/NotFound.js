@@ -8,8 +8,11 @@ import PreLoader from "../../../components/PreLoader";
 
 const Wrapper = styled.div`
   max-width: 1232px;
-  margin: 0 auto;
-  padding: 50px 32px;
+  margin:${props => props.margin || '0 auto 55px'};
+  padding: 0 32px;
+  @media (max-width: 768px){
+    padding: 0 16px;
+  }
 `
 
 const Title = styled.h2`
@@ -18,27 +21,19 @@ const Title = styled.h2`
   background-color: rgba(208, 196, 185, 0.2);
   padding: 30px 16px;
   border: 2px solid ${colors.red};
+  @media (max-width: 768px){
+    font-size: 14px;
+    padding: 10px 10px;
+  }
 `
 
-const  NotFound = ({resultRef}) => {
-  const isLoad = useSelector(loading)
-  const userClickFilter = useSelector(clickFilter)
-  const goodsData = useSelector(goods)
+const NotFound = ({resultRef, margin}) => {
 
-  return (
-      <>
-          {
-              !isLoad && userClickFilter && goodsData.length === 0 ?
-                  <Wrapper ref={resultRef}>
-                    <Title>No beauty products found &#9785;&#9785;&#9785;</Title>
-                  </Wrapper> : null
-          }
-
-          {
-              isLoad && userClickFilter && goodsData.length === 0 ? <PreLoader resultRef={resultRef}/> : null
-          }
-      </>
-  )
+    return (
+        <Wrapper ref={resultRef} margin={margin}>
+            <Title>No beauty products found &#9785;&#9785;&#9785;</Title>
+        </Wrapper>
+    )
 }
 
 export default NotFound

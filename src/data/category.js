@@ -4,31 +4,31 @@ export const category = [
     {
         name: 'allGoods',
         title: 'All goods',
-        imageUrl: 'https://ltdfoto.ru/images/2022/05/25/beauty.png',
+        imageUrl: 'https://res.cloudinary.com/dftqoawq3/image/upload/v1656340441/Modnikky/category/beauty_tzo5o0.png',
     },
     {
         name: 'dresses',
         title: 'Dresses',
-        imageUrl: 'https://ltdfoto.ru/images/2022/05/25/dresses.png',
+        imageUrl: 'https://res.cloudinary.com/dftqoawq3/image/upload/v1656340437/Modnikky/category/dresses_nfobq1.png',
     },
     {
         name: 'tees',
         title: 'Tees',
-        imageUrl: 'https://ltdfoto.ru/images/2022/05/25/tops.png',
+        imageUrl: 'https://res.cloudinary.com/dftqoawq3/image/upload/v1656340438/Modnikky/category/overalls_cwectv.png',
     },
     {
         name: 'swimwear',
         title: 'Swimwear',
-        imageUrl: 'https://ltdfoto.ru/images/2022/05/25/hats.png',
+        imageUrl: 'https://res.cloudinary.com/dftqoawq3/image/upload/v1656340438/Modnikky/category/hats_zt6iu2.png',
     },
     {
         name: 'denim',
         title: 'Denim',
-        imageUrl: 'https://ltdfoto.ru/images/2022/05/25/denim.png',
+        imageUrl: 'https://res.cloudinary.com/dftqoawq3/image/upload/v1656340438/Modnikky/category/denim_igbuo5.png',
     },
     {
         name: 'tops',
         title: 'Tops',
-        imageUrl: 'https://ltdfoto.ru/images/2022/05/25/overalls.png',
+        imageUrl: 'https://res.cloudinary.com/dftqoawq3/image/upload/v1656340440/Modnikky/category/tops_xh0nf0.png',
     },
 ]

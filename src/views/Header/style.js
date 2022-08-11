@@ -5,14 +5,16 @@ import {Link} from "react-router-dom";
 export const HeaderBlock = styled.header`
   position: absolute;
   width: 100%;
-  background-color: rgba(208, 196, 185, 0);
+  background-color: ${props => props.bg || 'rgba(208, 196, 185, 0)'};
   text-transform: uppercase;
   font-size: ${fontSetting.small.fs};
   line-height: ${fontSetting.small.lh};
   transition: .5s ease;
-
   &:hover {
-    background-color: rgba(208, 196, 185, 0.8);
+    background-color: ${props => props.hoverBg || 'rgba(208, 196, 185, 0.8)'};
+  }
+  @media (max-width: 768px) {
+    
   }
 `
 export const Navigation = styled.nav`
@@ -26,11 +28,14 @@ export const Navigation = styled.nav`
 
 export const LeftNav = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const Logo = styled.svg`
   height: 55px;
-  fill: ${colors.white};
+  fill: ${props => props.color || colors.white};
   transition: .2s ease;
 
   &:hover {
@@ -49,7 +54,7 @@ export const RightNav = styled.div`
 
 export const NavItem = styled.div`
   cursor: pointer;
-  color: ${colors.white};
+  color: ${props => props.color || colors.white};
   transition: .2s ease;
 
   &:not(:last-child) {
@@ -65,9 +70,9 @@ export const NavItem = styled.div`
   }
 `
 export const HeaderLink = styled(Link)`
-  color: ${colors.white};
+  color: ${props => props.color || colors.white};
   transition: .2s ease;
-    
+
   &:hover {
     color: ${colors.brown};
   }
@@ -79,10 +84,10 @@ export const HeaderLink = styled(Link)`
 
 export const NavItemSearch = styled.div`
   position: relative;
-  color: ${colors.white};
+  color: ${props => props.color || colors.white};
   transition: .2s ease;
   cursor: pointer;
-  
+
   &:not(:last-child) {
     margin-right: 50px;
   }
@@ -102,6 +107,7 @@ export const NavItemSearch = styled.div`
   &:active .icon {
     fill: ${colors.black};
   }
+
   .registrationLink {
     color: ${colors.white};
   }
@@ -113,7 +119,7 @@ export const SearchIcon = styled.svg`
   bottom: 3px;
   width: 15px;
   height: 15px;
-  fill: ${colors.white};
+  fill: ${props => props.color || colors.white};
   margin-right: 5px;
   transition: .2s ease;
 `
@@ -121,7 +127,7 @@ export const SearchIcon = styled.svg`
 export const HeartIcon = styled.svg`
   width: 15px;
   height: 15px;
-  fill: ${colors.white};
+  fill: ${props => props.color || colors.white};
 
   &:hover {
     fill: ${colors.brown};

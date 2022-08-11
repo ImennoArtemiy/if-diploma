@@ -1,7 +1,16 @@
-import {getAllBeauty, getAllDenim, getAllDresses, getAllGoods, getAllSwimwear, getAllTees, getAllTops} from "./actions";
+import {
+    getAllDenim,
+    getAllDresses,
+    getAllGoods,
+    getAllSwimwear,
+    getAllTees,
+    getAllTops,
+} from "./actions";
 import {handleActions} from "redux-actions";
 
+
 const initialState = []
+
 
 const goodReducer = {
     [getAllGoods]: (state = initialState, action) => action.payload

@@ -5,6 +5,12 @@
     padding: 0 8px;
     position: relative;
 }
+
+@media (max-width: 768px) {
+    .slick-slide {
+        padding: 0 5px 0 0;
+    }
+}
 .slick-arrow {
     box-sizing: content-box;
     display: flex !important;
@@ -50,6 +56,7 @@
 .slick-dots {
     position: absolute;
     bottom: -65px!important;
+    margin-bottom: 10px!important;
 }
 
 

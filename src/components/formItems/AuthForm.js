@@ -6,7 +6,7 @@ import BlackBtn from "../Btns/BlackBtn";
 import {Form, TitleWrap, Title, Flex, GoTo, Error} from "./RegForm/style";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {login} from "../../ducks/user/actions";
+import {enteredTheMainPage, login} from "../../ducks/user/actions";
 import {email, password} from "../../ducks/user/selectors";
 import CloseBtn from "../CloseBtn";
 
@@ -67,6 +67,7 @@ const AuthForm = ({setHaveAnAccount}) => {
     const handleLoginClick = () => {
         if (emailValue === userEmail && passwordValue === userPassword) {
             dispatch(login())
+            dispatch(enteredTheMainPage())
             setError(false)
         } else {
             setError(true)

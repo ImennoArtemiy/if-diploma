@@ -9,7 +9,7 @@ const persistConfig = {
     key: 'root',
     storage: LocalStorage,
     blacklist: [],
-    whitelist: ['user'],
+    whitelist: ['user', 'favorites', 'bag'],
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

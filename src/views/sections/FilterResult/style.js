@@ -10,13 +10,18 @@ export const LikeBtn = styled.svg`
   margin: 10px;
   fill: ${props => props.fill};
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `
 
 export const Card = styled.div`
   position: relative;
   width: calc(25% - 16px);
   margin: 24px 16px 0 0;
-  
+
   @media (max-width: 900px) {
     margin: 8px 0 0 0;
     width: calc(50% - 8px);
@@ -59,6 +64,11 @@ export const BlackOutContainer = styled.div`
   &:hover {
     opacity: 1;
   }
+
+  @media (max-width: 768px) {
+    opacity: 1;
+    background: transparent;
+  }
 `
 export const ReservationBtn = styled.button.attrs({type: 'button'})`
   position: absolute;
@@ -76,9 +86,10 @@ export const ReservationBtn = styled.button.attrs({type: 'button'})`
   @media (max-width: 768px) {
     font-size: 19px;
     line-height: 21px;
-    padding: 7px 12px;
+    padding: 7px;
+    width: 65%;
   }
-  @media (max-width: 576px) {
+  @media (max-width: 480px) {
     font-size: 12px;
     line-height: 14px;
   }
@@ -95,12 +106,19 @@ export const ReservationBtn = styled.button.attrs({type: 'button'})`
     border: 1px solid #FFFFFF;
   }
 `
-export const Text = styled.p`
+export const Price = styled.p`
   color: ${colors.black};
   margin-top: 10px;
+  @media (max-width: 768px) {
+    margin-bottom: 8px;
+    font-weight: 500
+  }
 `
 export const Name = styled.p`
   color: ${colors.gray};
   margin-bottom: 30px;
   font-size: 16px;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `

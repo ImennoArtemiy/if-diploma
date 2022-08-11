@@ -4,12 +4,19 @@ import {useState} from "react";
 import {colors} from "../../../data/siteConfig";
 import styled from "styled-components";
 import {getDiscountPrice, getRubleForUsd} from "../../../functions/functions";
+import {addToBag, removeFromBag} from "../../../ducks/addRemoveFromBag/actions";
+import {useDispatch} from "react-redux";
+import {addToFavorites, removeFromFavorites} from "../../../ducks/addRemoveFromFavorites/actions";
 
 const CardSale = styled.div`
  
 `
 const Flex = styled.div`
   display: flex;
+  @media (max-width: 480px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 `
 const OldPrice = styled.p`
   color: ${colors.black};
@@ -29,10 +36,16 @@ const DiscountValue = styled.p`
   font-size: 16px;
   line-height: 1;
   padding: 10px 15px;
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
 `
 
 const SaleCard = ({item}) => {
 
+    const dispatch = useDispatch()
+    const [addBag, setAddBag] = useState(false)
     const [addLike, setAddLike] = useState(false)
 
     const discountValue = 55
@@ -40,7 +53,20 @@ const SaleCard = ({item}) => {
     const discountPrice = getDiscountPrice(currentPrice, discountValue)
 
     const handlerLikeClick = () => {
+        if (!addLike) {
+            dispatch(addToFavorites(item))
+        } else  {
+            dispatch(removeFromFavorites(item.id))
+        }
         setAddLike(!addLike)
+    }
+    const handleAddBagClick = () => {
+        if (!addBag) {
+            dispatch(addToBag(item))
+        } else {
+            dispatch(removeFromBag(item.id))
+        }
+        setAddBag(!addBag)
     }
 
     return (
@@ -51,7 +77,7 @@ const SaleCard = ({item}) => {
                 </LikeBtn>
                 <img src={item.images[0]} alt={item.text}/>
                 <BlackOutContainer>
-                    <ReservationBtn>ADD TO BAG</ReservationBtn>
+                    <ReservationBtn onClick={handleAddBagClick}>{!addBag ? 'ADD TO BAG' : 'REMOVE FROM BAG'}</ReservationBtn>
                 </BlackOutContainer>
                 <DiscountValue>{`${discountValue}%`}</DiscountValue>
             </ImageContainer>

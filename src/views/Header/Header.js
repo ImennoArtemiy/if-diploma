@@ -14,20 +14,34 @@ import {
 import {svgName} from "../../data/svg";
 import {navigatePageUrl} from "../../data/siteConfig";
 import {useDispatch, useSelector} from "react-redux";
-import {isLogged} from "../../ducks/user/selectors";
-import {logout} from "../../ducks/user/actions";
+import {inMainPage, isLogged} from "../../ducks/user/selectors";
+import {
+    enteredTheFavorites,
+    enteredTheMainPage,
+    logout,
+    outOfTheFavorites,
+    outOfTheMainPage
+} from "../../ducks/user/actions";
 import SearchInput from "../../components/formItems/SearchInput";
+import {bag} from "../../ducks/addRemoveFromBag/selectors";
 
 const Header = ({
                     userWantsToSearch,
                     setUserWantsToSearch,
                     arrivalRef,
+                    searchResultRef,
                     shopRef,
                     salesRef,
                     setArrivalsSelected,
+                    color,
+                    bg,
+                    hoverBg,
                 }) => {
-    const userIsLogged = useSelector(isLogged)
+
     const dispatch = useDispatch()
+    const userIsLogged = useSelector(isLogged)
+    const userBag = useSelector(bag)
+    const userInMainPage = useSelector(inMainPage)
 
     const scrollTo = (e) => {
         let id = e.target.id
@@ -38,7 +52,6 @@ const Header = ({
         }
         if (id === 'shopBtn') {
             window.scrollTo(0, shopRef.current.offsetTop)
-            setArrivalsSelected(false)
         }
         if (id === 'salesBtn') {
             window.scrollTo(0, salesRef.current.offsetTop)
@@ -46,7 +59,9 @@ const Header = ({
     }
 
     const handleLogoutClick = () => {
-        dispatch(logout(false))
+        dispatch(logout())
+        dispatch(enteredTheMainPage())
+        dispatch((outOfTheFavorites()))
     }
 
     const handleSearchClick = () => {
@@ -54,44 +69,73 @@ const Header = ({
     }
 
     return (
-        <HeaderBlock>
+        <HeaderBlock bg={bg} hoverBg={hoverBg}>
             <Navigation>
                 {
-                    userIsLogged && (
+                    userIsLogged && userInMainPage && (
                         <LeftNav>
-                            <NavItem onClick={scrollTo}
-                                     id='collectionBtn'>{headerData.leftNav.collections}</NavItem>
-                            <NavItem id='shopBtn' onClick={scrollTo}>{headerData.leftNav.shop}</NavItem>
-                            <NavItem id='salesBtn' onClick={scrollTo}>{headerData.leftNav.sales}</NavItem>
+                            <NavItem color={color}
+                                     onClick={scrollTo}
+                                     id='collectionBtn'
+                            >{headerData.leftNav.collections}</NavItem>
+                            <NavItem color={color}
+                                     id='shopBtn'
+                                     onClick={scrollTo}
+                            >{headerData.leftNav.shop}</NavItem>
+                            <NavItem color={color}
+                                     id='salesBtn'
+                                     onClick={scrollTo}
+                            >{headerData.leftNav.sales}</NavItem>
                         </LeftNav>
                     )
                 }
-                <NavItem>
-                    <Logo>
-                        <use href={svgName.logo}/>
-                    </Logo>
+                <NavItem onClick={() => {
+                    dispatch(enteredTheMainPage())
+                    dispatch(outOfTheFavorites())
+                }}
+                >
+                    <HeaderLink to={navigatePageUrl.main}>
+                        <Logo color={color}>
+                            <use href={svgName.logo}/>
+                        </Logo>
+                    </HeaderLink>
                 </NavItem>
                 <RightNav>
                     {
-                        userWantsToSearch && <SearchInput/>
+                        userWantsToSearch && <SearchInput searchResultRef={searchResultRef}
+                                                          setUserWantsToSearch={setUserWantsToSearch}
+                        />
                     }
-                    <NavItemSearch onClick={handleSearchClick}>
-                        <SearchIcon className='icon'>
-                            <use href={svgName.search}/>
-                        </SearchIcon>
-                        {headerData.rightNav.search}
-                    </NavItemSearch>
+                    {
+                        userInMainPage && (
+                            <NavItemSearch color={color}
+                                           onClick={handleSearchClick}
+                            >
+                                <SearchIcon color={color}
+                                            className='icon'
+                                >
+                                    <use href={svgName.search}/>
+                                </SearchIcon>
+                                {headerData.rightNav.search}
+                            </NavItemSearch>
+                        )
+                    }
                     <NavItem>
                         {
                             !userIsLogged && (
-                                <HeaderLink to={navigatePageUrl.registration}>
+                                <HeaderLink color={color}
+                                            to={navigatePageUrl.registration}
+                                >
                                     {headerData.rightNav.signIn}
                                 </HeaderLink>
                             )
                         }
                         {
                             userIsLogged && (
-                                <HeaderLink onClick={handleLogoutClick} to={navigatePageUrl.main}>
+                                <HeaderLink color={color}
+                                            onClick={handleLogoutClick}
+                                            to={navigatePageUrl.main}
+                                >
                                     {headerData.rightNav.signOut}
                                 </HeaderLink>
                             )
@@ -101,10 +145,27 @@ const Header = ({
                     {
                         userIsLogged && (
                             <>
-                                <NavItem>{headerData.rightNav.bag}</NavItem>
-                                <HeartIcon>
-                                    <use href={svgName.heart}/>
-                                </HeartIcon>
+                                <NavItem onClick={() => {
+                                    dispatch(outOfTheMainPage())
+                                    dispatch(outOfTheFavorites())
+                                }}
+                                >
+                                    <HeaderLink color={color}
+                                                to={navigatePageUrl.bag}
+                                    >
+                                        {`${headerData.rightNav.bag}(${userBag.length})`}
+                                    </HeaderLink>
+                                </NavItem>
+                                <HeaderLink onClick={() => {
+                                    dispatch(outOfTheMainPage())
+                                    dispatch(enteredTheFavorites())
+                                }}
+                                            to={navigatePageUrl.favorites}
+                                >
+                                    <HeartIcon color={color}>
+                                        <use href={svgName.heart}/>
+                                    </HeartIcon>
+                                </HeaderLink>
                             </>
                         )
                     }

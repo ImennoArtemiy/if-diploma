@@ -8,7 +8,7 @@ import PreLoader from "../../../components/PreLoader";
 import {TransparentBrownBtn} from "../../../components/Btns/TransparentBrownBtn";
 
 const Section = styled.section`
- 
+
 `
 const CardsWrapper = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const BtnContainer = styled.div`
   justify-content: center;
 `
 
-const FilterResult = ({myRef, sumVisibleCards, setSumVisibleCards, arrayData, condition, title}) => {
+const FilterResult = ({sumVisibleCards, setSumVisibleCards, arrayData, condition, title}) => {
 
     const isLoad = useSelector(loading)
 
@@ -35,37 +35,36 @@ const FilterResult = ({myRef, sumVisibleCards, setSumVisibleCards, arrayData, co
 
 
     return (
+        <>
+            {
+                condition && arrayData.length > 0 &&
+                <Section>
+                    <Wrapper>
+                        {
+                            !isLoad && (
+                                <>
+                                    <h2>{title || arrayData[0].type}</h2>
+                                    <CardsWrapper>
+                                        {
+                                            data.slice(0, sumVisibleCards).map(item => <FilterCard key={item.id}
+                                                                                                   item={item}/>)
+                                        }
+                                    </CardsWrapper>
+                                    {
+                                        sumVisibleCards < data.length && (
+                                            <BtnContainer>
+                                                <TransparentBrownBtn onClick={handleShowMoreClick} text='SHOW MORE'/>
+                                            </BtnContainer>
+                                        )
+                                    }
+                                </>
+                            )
+                        }
+                    </Wrapper>
+                </Section>
+            }
+        </>
 
-        condition && arrayData.length > 0 &&
-        <Section ref={myRef}>
-            <Wrapper>
-                {
-                    !isLoad && (
-                        <>
-                            <h2>{arrayData[0].type}</h2>
-                            <CardsWrapper>
-                                {
-                                    data.slice(0, sumVisibleCards).map(item => <FilterCard key={item.id} item={item}/>)
-                                }
-                            </CardsWrapper>
-                            {
-                                sumVisibleCards < data.length && (
-                                    <BtnContainer>
-                                        <TransparentBrownBtn onClick={handleShowMoreClick} text='SHOW MORE'/>
-                                    </BtnContainer>
-                                )
-                            }
-                        </>
-                    )
-                }
-                {
-                    isLoad && (
-                        <PreLoader/>
-                    )
-                }
-
-            </Wrapper>
-        </Section>
     )
 }
 

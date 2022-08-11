@@ -101,13 +101,25 @@ export const GlobalStyles = createGlobalStyle`
   .labelActive {
     bottom: 30px;
   }
+  .line {
+    text-decoration: underline;
+  }
 `
 export const Wrapper = styled.div`
   position: relative;
   max-width: 1232px;
   margin: 0 auto;
   padding: ${props => props.padding || '50px 32px'};
+
+  @media (max-width: 768px) {
+    padding: 30px 16px;
+  }
   
+  h2 {
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+  }
 `
 export const blur = keyframes`
   0% {

@@ -7,6 +7,7 @@ import {useDispatch} from "react-redux";
 import {changeValue, clearValue, findValue} from "../../ducks/searchValue/actions";
 import {search} from "../../data/forms";
 import {getGoods} from "../../ducks/getAllGoods/actions";
+import {clickSearch} from "../../ducks/clickSearch/actions";
 
 const Form = styled.form`
   display: flex;
@@ -19,7 +20,7 @@ const Form = styled.form`
   border-radius: 8px;
 `
 
-const SearchInput = () => {
+const SearchInput = ({setUserWantsToSearch, searchResultRef}) => {
 
     const [searchValue, setSearchValue] = useState('')
     const dispatch = useDispatch()
@@ -39,9 +40,16 @@ const SearchInput = () => {
 
     const handleKeyDown = (e) => {
         if(e.keyCode === 13) {
+            window.scrollTo(0, searchResultRef.current.offsetTop)
             e.preventDefault();
+            dispatch(clickSearch())
             dispatch(getGoods(findValue))
+            setTimeout(()=> {
+                handleCloseClick()
+                setUserWantsToSearch(false)
+            },200)
         }
+
     }
 
 

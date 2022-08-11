@@ -5,14 +5,19 @@ import CategoryCard from "./CategoryCard";
 import styled from "styled-components";
 
 const Section = styled.section`
-  
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
 `
 const CategoryWrapper = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `
 
 
-const Category = ({resultRef, shopRef, setSumVisibleCards}) => {
+const Category = ({shopRef, filterResultRef, setSumVisibleCards}) => {
 
     return (
         <Section ref={shopRef}>
@@ -21,7 +26,7 @@ const Category = ({resultRef, shopRef, setSumVisibleCards}) => {
                 <CategoryWrapper>
                     {
                         category.map((item, i) => (
-                            <CategoryCard resultRef={resultRef}
+                            <CategoryCard filterResultRef={filterResultRef}
                                           key={i}
                                           item={item}
                                           setSumVisibleCards={setSumVisibleCards}/>

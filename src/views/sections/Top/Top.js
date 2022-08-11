@@ -1,6 +1,5 @@
 import topData from "../../../data/top";
-import {Section, MainText, MainTitle, ContentWrap, ClearBlurWrap} from "./style";
-import {Wrapper} from "../../../globalStyles";
+import {Section, MainText, MainTitle, ContentWrap, ClearBlurWrap, Wrapper} from "./style";
 import {TransparentWhiteBtn} from "../../../components/Btns/TransparentWhiteBtn";
 
 const Top = ({arrivalRef, setArrivalsSelected}) => {

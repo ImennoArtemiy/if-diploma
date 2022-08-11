@@ -20,6 +20,17 @@ const Card = styled.div`
     margin-right: 16px;
   }
 
+  @media (max-width: 768px) {
+    min-width: calc(50% - 8px);
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+    &:nth-child(odd) {
+      margin-right: 16px;
+    }
+    margin-top: 16px;
+  }
+
   img {
     &:hover + p {
       background-color: ${colors.brown};
@@ -51,19 +62,20 @@ const Card = styled.div`
       background-color: ${colors.black};
       color: ${colors.white};
     }
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
   }
 `
 
-const CategoryCard = ({item, resultRef, setSumVisibleCards}) => {
+const CategoryCard = ({item, setSumVisibleCards, filterResultRef}) => {
 
     const dispatch = useDispatch()
 
-    const scrollToRef = () => {
-        window.scrollTo(0, resultRef.current.offsetTop)
-    }
-
     const handleClick = (e) => {
         let name = e.target.className
+        window.scrollTo(0, filterResultRef.current.offsetTop)
 
         if (name === 'dresses') {
             dispatch(getGoods(getAllDresses))
@@ -85,7 +97,6 @@ const CategoryCard = ({item, resultRef, setSumVisibleCards}) => {
         }
 
         dispatch(clickFilter())
-        setTimeout(scrollToRef, 200)
         setSumVisibleCards(4)
     }
 

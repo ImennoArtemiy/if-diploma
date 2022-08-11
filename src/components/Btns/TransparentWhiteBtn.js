@@ -23,6 +23,13 @@ const Btn = styled.button.attrs({type: 'button'})`
     color: ${btn.transparentWhite.activeCl};
     border: ${btn.transparentWhite.activeBr};
   }
+  @media (max-width: 768px) {
+    max-width: 70%;
+    color: ${btn.transparentBlack.cl};
+    border: ${btn.transparentBlack.br};
+    font-size: 16px;
+    line-height: 20px;
+  }
 `
 
 export const TransparentWhiteBtn = ({id, text, onClick}) => {
